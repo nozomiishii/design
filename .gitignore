@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+.pnpm-store/
+**/.claude/settings.local.json
+**/.claude/worktrees/
+**/.claude/debug/
+lefthook-local.yaml
