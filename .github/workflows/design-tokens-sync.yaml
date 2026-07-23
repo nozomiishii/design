@@ -1,0 +1,71 @@
+name: Design Tokens Sync
+
+# TokensBrücke が push した figma-export.tokens.json を検知して、
+# モード別ファイルへの分割と生成物の再ビルドを PR ブランチにコミットする。
+# GITHUB_TOKEN による push は新しい workflow run を起こさないため無限ループしない。
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    paths:
+      - "packages/design-tokens/figma-export.tokens.json"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash
+    working-directory: packages/design-tokens
+
+jobs:
+  sync:
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    permissions:
+      contents: write # required to push regenerated artifacts back to the PR branch
+
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+        with:
+          working-directory: packages/design-tokens
+
+      - name: Split modes
+        run: pnpm exec tsx src/split-figma-push.ts
+
+      - name: Lint tokens
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      - name: Commit regenerated files
+        working-directory: ${{ github.workspace }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          gh auth setup-git
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git add packages/design-tokens
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+            exit 0
+          fi
+
+          git commit -m "chore(tokens): split modes and regenerate artifacts"
+          git push origin "HEAD:$HEAD_REF"

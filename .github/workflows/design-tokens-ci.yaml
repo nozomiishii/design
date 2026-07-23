@@ -1,0 +1,94 @@
+name: Design Tokens CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash
+    working-directory: packages/design-tokens
+
+jobs:
+  changes:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read # required by dorny/paths-filter to list PR files via the GitHub API
+    outputs:
+      src: ${{ steps.changes.outputs.src }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4.0.1
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'packages/design-tokens/**'
+              - '.github/workflows/design-tokens-ci.yaml'
+              - '.github/actions/setup-node/action.yaml'
+
+  check:
+    needs: changes
+    if: needs.changes.outputs.src == 'true'
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    permissions:
+      contents: read # required by actions/checkout to fetch repository code
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+        with:
+          working-directory: packages/design-tokens
+
+      - name: Test
+        run: pnpm test
+
+      - name: Lint tokens
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
+
+      # dist/ と DESIGN.md はトークンからの生成物。
+      # 差分が出る = 生成し忘れ or 手編集なので落とす。
+      - name: Detect drift
+        run: git diff --exit-code
+
+  required:
+    # name 変更時は infra 側の required_status_checks も更新する
+    name: Design Tokens CI / required
+    needs: [changes, check]
+    if: always()
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    steps:
+      - name: Fail if any required job failed or was cancelled
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        working-directory: ${{ github.workspace }}
+        run: |
+          echo "A required job failed or was cancelled"
+          exit 1

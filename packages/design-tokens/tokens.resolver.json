@@ -1,0 +1,15 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/resolver.json",
+  "version": "2025.10",
+  "name": "dev design tokens",
+  "description": "Figma Variables のモード別エクスポートを束ねる DTCG リゾルバ",
+  "resolutionOrder": [{ "$ref": "#/modifiers/theme" }],
+  "modifiers": {
+    "theme": {
+      "contexts": {
+        "light": [{ "$ref": "./tokens/light.tokens.json" }],
+        "dark": [{ "$ref": "./tokens/dark.tokens.json" }]
+      }
+    }
+  }
+}

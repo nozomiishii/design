@@ -1,0 +1,36 @@
+{
+  "name": "@nozomiishii/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "デザイントークンの真実の源。Figma Variables と Tailwind CSS を DTCG 2025.10 で同期する",
+  "license": "MIT",
+  "author": "Nozomi Ishii",
+  "type": "module",
+  "exports": {
+    "./tokens.css": "./generated/tokens.css",
+    "./tailwind-theme.css": "./generated/tailwind-theme.css"
+  },
+  "scripts": {
+    "build": "tz build && tsx src/generate-design-md.ts && pnpm --workspace-root exec prettier --write packages/design-tokens/generated packages/design-tokens/DESIGN.md",
+    "import:figma": "tsx src/import-figma-export.ts",
+    "lint": "tz lint && tsx src/tokens-check.ts",
+    "test": "vitest",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "@nozomiishii/tsconfig": "1.9.0",
+    "@terrazzo/cli": "2.4.0",
+    "@terrazzo/plugin-css": "2.4.0",
+    "@terrazzo/plugin-tailwind": "2.4.0",
+    "@types/node": "24.13.2",
+    "@vitest/coverage-v8": "4.1.9",
+    "tsx": "4.21.1",
+    "typescript": "6.0.3",
+    "vitest": "4.1.9",
+    "zod": "4.4.3"
+  },
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": "24.18.0"
+  }
+}
