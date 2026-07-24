@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "design",
+  "private": true,
+  "description": "🎨 Design system foundation",
+  "homepage": "https://github.com/nozomiishii/design#readme",
+  "bugs": {
+    "url": "https://github.com/nozomiishii/design/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nozomiishii/design.git"
+  },
+  "license": "MIT",
+  "author": "Nozomi Ishii",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "postinstall": "postinstall",
+    "lint": "eslint .",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@nozomiishii/commitlint-config": "1.11.0",
+    "@nozomiishii/eslint-config": "1.11.0",
+    "@nozomiishii/lefthook-config": "1.11.0",
+    "@nozomiishii/postinstall": "1.11.0",
+    "@nozomiishii/prettier-config": "1.11.0",
+    "@nozomiishii/tsconfig": "1.11.0",
+    "eslint": "10.6.0",
+    "lefthook": "2.1.9",
+    "prettier": "3.9.1"
+  },
+  "packageManager": "pnpm@11.10.0"
+}

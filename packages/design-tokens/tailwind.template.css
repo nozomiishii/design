@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  @tz (theme: "light");
+}
+
+@custom-variant dark ([data-theme="dark"] &);
+
+@variant dark {
+  @tz (theme: "dark");
+}
