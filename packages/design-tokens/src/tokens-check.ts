@@ -15,8 +15,8 @@ export const CONTRAST_PAIRS = [
 
 export const WCAG_AA_MIN_CONTRAST = 4.5;
 
-// 期待するトークンID。terrazzo.config.ts の core/required-children もここから組み立てる。
-// Figma Variables を増やしたらここに追加する。
+// 消えたら落とす最低限のトークンID。増やす分は触らなくてよく、消す・リネームするときだけ更新する。
+// terrazzo.config.ts の core/required-children もここから組み立てる。
 export const REQUIRED_TOKENS = ["color.background", "color.text"] as const;
 
 export type CheckError = {
