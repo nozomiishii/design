@@ -10,7 +10,7 @@
 
 ## Figma
 
-Upstream of the tokens: [design-tokens](https://www.figma.com/design/fiF1Uytw1lIrwnHYS2ydnd)
+[design-tokens](https://www.figma.com/design/fiF1Uytw1lIrwnHYS2ydnd)
 
 ## Development
 
