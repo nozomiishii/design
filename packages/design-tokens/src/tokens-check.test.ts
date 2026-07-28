@@ -1,10 +1,13 @@
 import { describe, expect, test } from "vitest";
 import {
   checkContrast,
+  checkModeDivergence,
   checkParity,
+  checkRequired,
   contrastRatio,
   flattenTokens,
   type FlatTokens,
+  requiredChildrenMatches,
 } from "./tokens-check";
 
 const color = (components: [number, number, number]) => ({
@@ -145,5 +148,106 @@ describe("checkContrast", () => {
     ]);
 
     expect(checkContrast(contexts, pairs, 4.5)).toStrictEqual([]);
+  });
+});
+
+describe("requiredChildrenMatches", () => {
+  // 同じグループのトークンは1つの match にまとまる
+  test("groups ids sharing a parent into a single match", () => {
+    expect(requiredChildrenMatches(["color.background", "color.text"])).toStrictEqual([
+      { match: ["color.*"], requiredTokens: ["background", "text"] },
+    ]);
+  });
+
+  // 入れ子の深さが違うグループはそれぞれの match になる
+  test("emits a separate match per parent group", () => {
+    expect(requiredChildrenMatches(["color.brand.primary", "color.text"])).toStrictEqual([
+      { match: ["color.brand.*"], requiredTokens: ["primary"] },
+      { match: ["color.*"], requiredTokens: ["text"] },
+    ]);
+  });
+
+  // グループを持たないIDは `.*` という無意味なグロブになるため受け付けない
+  test("rejects an id without a parent group", () => {
+    expect(() => requiredChildrenMatches(["background"])).toThrow("background");
+  });
+});
+
+describe("checkRequired", () => {
+  // 期待するトークンが欠けているコンテキストをエラーにする
+  test("reports a required token missing from a context", () => {
+    const contexts = new Map<string, FlatTokens>([
+      ["dark", new Map([["color.background", color([0, 0, 0])]])],
+      [
+        "light",
+        new Map([
+          ["color.background", color([1, 1, 1])],
+          ["color.text", color([0, 0, 0])],
+        ]),
+      ],
+    ]);
+
+    expect(checkRequired(contexts, ["color.background", "color.text"])).toStrictEqual([
+      { context: "dark", message: "期待するトークン color.text がコンテキスト dark に存在しない" },
+    ]);
+  });
+
+  // 期待するトークンが全コンテキストに揃っていればエラーなし
+  test("passes when every context defines all required tokens", () => {
+    const contexts = new Map<string, FlatTokens>([
+      ["dark", new Map([["color.text", color([1, 1, 1])]])],
+      ["light", new Map([["color.text", color([0, 0, 0])]])],
+    ]);
+
+    expect(checkRequired(contexts, ["color.text"])).toStrictEqual([]);
+  });
+});
+
+describe("checkModeDivergence", () => {
+  // 全コンテキストが同値ならモードが効いていないのでエラーにする
+  test("reports contexts that carry identical values", () => {
+    const contexts = new Map<string, FlatTokens>([
+      ["dark", new Map([["color.text", color([0, 0, 0])]])],
+      ["light", new Map([["color.text", color([0, 0, 0])]])],
+    ]);
+
+    expect(checkModeDivergence(contexts)).toStrictEqual([
+      {
+        context: "dark, light",
+        message: "全コンテキストの値が同一。Figma のモード名が light / dark とずれている可能性",
+      },
+    ]);
+  });
+
+  // 1トークンでも値が違えばモードは効いているのでエラーなし
+  test("passes when at least one token differs across contexts", () => {
+    const contexts = new Map<string, FlatTokens>([
+      [
+        "dark",
+        new Map([
+          ["color.border", color([0.5, 0.5, 0.5])],
+          ["color.text", color([1, 1, 1])],
+        ]),
+      ],
+      [
+        "light",
+        new Map([
+          // モード非依存のトークンが混ざっていても、他が違えば問題ない
+          ["color.border", color([0.5, 0.5, 0.5])],
+          ["color.text", color([0, 0, 0])],
+        ]),
+      ],
+    ]);
+
+    expect(checkModeDivergence(contexts)).toStrictEqual([]);
+  });
+
+  // コンテキストが1つしかない構成では比較対象がないのでエラーなし
+  test("passes when there is only one context", () => {
+    const contexts = new Map<string, FlatTokens>([
+      ["light", new Map([["color.text", color([0, 0, 0])]])],
+    ]);
+
+    expect(checkModeDivergence(contexts)).toStrictEqual([]);
   });
 });

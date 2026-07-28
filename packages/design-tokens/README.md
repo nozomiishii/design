@@ -62,6 +62,7 @@ pnpm import:figma <エクスポートフォルダ>      # 公式エクスポー�
 ## トークンを増やすとき
 
 - Figma Variables に light / dark 両方の値を追加する（片方だけだと lint で落ちる）
+- `src/tokens-check.ts` の REQUIRED_TOKENS にトークンIDを追加する。terrazzo の `core/required-children` もここから組み立てる
 - テキストと背景の組を増やしたら `src/tokens-check.ts` の CONTRAST_PAIRS に追加する
 - `terrazzo.config.ts` の tailwind theme マッピングに新しいグループを足す
 

@@ -15,12 +15,21 @@ export const CONTRAST_PAIRS = [
 
 export const WCAG_AA_MIN_CONTRAST = 4.5;
 
+// 期待するトークンID。terrazzo.config.ts の core/required-children もここから組み立てる。
+// Figma Variables を増やしたらここに追加する。
+export const REQUIRED_TOKENS = ["color.background", "color.text"] as const;
+
 export type CheckError = {
   context: string;
   message: string;
 };
 
 export type FlatTokens = Map<string, ColorValue>;
+
+export type RequiredChildrenMatch = {
+  match: string[];
+  requiredTokens: string[];
+};
 
 type ColorValue = {
   alpha?: number;
@@ -69,6 +78,38 @@ export function checkContrast(
 }
 
 /**
+ * 全コンテキストの値が同一でないか検査する。
+ * Figma のモードが1つしかない、またはモード名が light / dark とずれていると、
+ * 分割時に既定値へフォールバックして全コンテキストが同値になる。
+ */
+export function checkModeDivergence(contexts: Map<string, FlatTokens>): CheckError[] {
+  if (contexts.size < 2) {
+    return [];
+  }
+
+  const [reference, ...others] = contexts.values().toArray();
+
+  if (reference === undefined) {
+    return [];
+  }
+
+  for (const tokens of others) {
+    for (const [id, value] of reference) {
+      if (JSON.stringify(tokens.get(id)) !== JSON.stringify(value)) {
+        return [];
+      }
+    }
+  }
+
+  return [
+    {
+      context: contexts.keys().toArray().join(", "),
+      message: "全コンテキストの値が同一。Figma のモード名が light / dark とずれている可能性",
+    },
+  ];
+}
+
+/**
  * 全コンテキストのトークンIDが一致するか検査する。
  * 片方のモードにだけトークンを追加した事故を検出する。
  */
@@ -88,6 +129,30 @@ export function checkParity(contexts: Map<string, FlatTokens>): CheckError[] {
         errors.push({
           context,
           message: `トークン ${id} がコンテキスト ${context} に存在しない`,
+        });
+      }
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * 期待するトークンが全コンテキストに存在するか検査する。
+ * トークンIDがずれる設定ミスを、値の検査より先に捕まえる。
+ */
+export function checkRequired(
+  contexts: Map<string, FlatTokens>,
+  ids: readonly string[],
+): CheckError[] {
+  const errors: CheckError[] = [];
+
+  for (const [context, tokens] of contexts) {
+    for (const id of ids) {
+      if (!tokens.has(id)) {
+        errors.push({
+          context,
+          message: `期待するトークン ${id} がコンテキスト ${context} に存在しない`,
         });
       }
     }
@@ -176,6 +241,31 @@ export function relativeLuminance(components: [number, number, number]): number 
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
+/**
+ * 期待するトークンIDを terrazzo の core/required-children が取る matches 形式に変換する。
+ */
+export function requiredChildrenMatches(ids: readonly string[]): RequiredChildrenMatch[] {
+  const byGroup = new Map<string, string[]>();
+
+  for (const id of ids) {
+    const separator = id.lastIndexOf(".");
+
+    if (separator === -1) {
+      throw new Error(`トークンID ${id} がグループを持たない。グループ付きのIDにする`);
+    }
+
+    const group = id.slice(0, separator);
+    const children = byGroup.get(group) ?? [];
+    children.push(id.slice(separator + 1));
+    byGroup.set(group, children);
+  }
+
+  return byGroup
+    .entries()
+    .map(([group, requiredTokens]) => ({ match: [`${group}.*`], requiredTokens }))
+    .toArray();
+}
+
 const isMain =
   process.argv[1] !== undefined && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
@@ -186,7 +276,9 @@ if (isMain) {
   );
   const contexts = loadContexts(resolverPath);
   const errors = [
+    ...checkRequired(contexts, REQUIRED_TOKENS),
     ...checkParity(contexts),
+    ...checkModeDivergence(contexts),
     ...checkContrast(contexts, CONTRAST_PAIRS, WCAG_AA_MIN_CONTRAST),
   ];
 
