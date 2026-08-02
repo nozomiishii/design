@@ -37,7 +37,7 @@ General settings:
 Push to server で GitHub PR を選び:
 
 - Personal access token: `repo` スコープの PAT
-- Owner: `nozomiishii` / Repository: `dev` / Branch: `figma-tokens`
+- Owner: `nozomiishii` / Repository: `design` / Branch: `figma-tokens`
 - File name: `packages/design-tokens/figma-export.tokens.json`
 - Commit message: `chore(tokens): update tokens from figma`
 
