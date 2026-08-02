@@ -1,0 +1,23 @@
+name: recommended
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  recommended:
+    permissions:
+      contents: read # required by actions/checkout
+      pull-requests: write # write: format revert PR titles, read: validate PR titles / list PR files (dorny/paths-filter)
+      actions: read # required by zizmor persona audits and referenced_workflows resolution
+    uses: nozomiishii/workflows/.github/workflows/recommended.yaml@0249f8a5d808a76c9b20604449cb7a15afc6378a # v3.4.0
