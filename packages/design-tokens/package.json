@@ -18,7 +18,7 @@
     "typecheck": "tsc"
   },
   "devDependencies": {
-    "@nozomiishii/tsconfig": "1.9.0",
+    "@nozomiishii/tsconfig": "2.1.0",
     "@terrazzo/cli": "2.4.0",
     "@terrazzo/plugin-css": "2.4.0",
     "@terrazzo/plugin-tailwind": "2.4.0",
