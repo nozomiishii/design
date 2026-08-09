@@ -5,10 +5,6 @@
   "compilerOptions": {
     "incremental": true,
 
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
-    "noEmit": true,
-
     "lib": ["ESNext"]
   },
   "include": ["**/*.ts"],
