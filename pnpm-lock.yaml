@@ -24,8 +24,8 @@ importers:
         specifier: 1.11.0
         version: 1.11.0(prettier@3.9.1)
       '@nozomiishii/tsconfig':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       eslint:
         specifier: 10.6.0
         version: 10.6.0(jiti@2.7.0)
@@ -39,8 +39,8 @@ importers:
   packages/design-tokens:
     devDependencies:
       '@nozomiishii/tsconfig':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       '@terrazzo/cli':
         specifier: 2.4.0
         version: 2.4.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(lightningcss@1.33.0)(tsx@4.21.1)
@@ -814,8 +814,8 @@ packages:
     peerDependencies:
       prettier: 3.9.1
 
-  '@nozomiishii/tsconfig@2.0.0':
-    resolution: {integrity: sha512-xRrMUfqjc4QP+KSCNvARw31k+f3gIhg6LmnQparU90mASiTEhC6XmjbIWsJaivuhC9Fp4us94Nh8hR2JY0sZKQ==}
+  '@nozomiishii/tsconfig@2.0.1':
+    resolution: {integrity: sha512-UaQ6Y/D7kFgvobgC/3m57u0kZQ07xyQ/z7faRUS79LAmkVb3dnaSF1DA1sizUW2II7kjKx7pFaj3g3/zIMdrIg==}
 
   '@ota-meshi/ast-token-store@0.3.0':
     resolution: {integrity: sha512-XRO0zi2NIUKq2lUk3T1ecFSld1fMWRKE6naRFGkgkdeosx7IslyUKNv5Dcb5PJTja9tHJoFu0v/7yEpAkrkrTg==}
@@ -4776,7 +4776,7 @@ snapshots:
       prettier: 3.9.1
       prettier-plugin-packagejson: 3.0.2(prettier@3.9.1)
 
-  '@nozomiishii/tsconfig@2.0.0': {}
+  '@nozomiishii/tsconfig@2.0.1': {}
 
   '@ota-meshi/ast-token-store@0.3.0': {}
 
