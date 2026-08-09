@@ -1,6 +1,7 @@
 node_modules/
 dist/
 coverage/
+*.tsbuildinfo
 .pnpm-store/
 **/.claude/settings.local.json
 **/.claude/worktrees/
