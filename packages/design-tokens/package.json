@@ -19,18 +19,18 @@
   },
   "devDependencies": {
     "@nozomiishii/tsconfig": "2.1.0",
-    "@terrazzo/cli": "2.4.0",
-    "@terrazzo/plugin-css": "2.4.0",
-    "@terrazzo/plugin-tailwind": "2.4.0",
-    "@types/node": "24.13.2",
-    "@vitest/coverage-v8": "4.1.9",
-    "tsx": "4.21.1",
+    "@terrazzo/cli": "2.5.0",
+    "@terrazzo/plugin-css": "2.5.0",
+    "@terrazzo/plugin-tailwind": "2.5.0",
+    "@types/node": "24.13.3",
+    "@vitest/coverage-v8": "4.1.10",
+    "tsx": "4.23.9",
     "typescript": "6.0.3",
-    "vitest": "4.1.9",
+    "vitest": "4.1.10",
     "zod": "4.4.3"
   },
-  "packageManager": "pnpm@11.10.0",
+  "packageManager": "pnpm@11.20.0",
   "engines": {
-    "node": "24.18.0"
+    "node": "24.19.0"
   }
 }
