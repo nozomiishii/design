@@ -24,7 +24,7 @@
     "@terrazzo/plugin-tailwind": "2.5.0",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.10",
-    "tsx": "4.23.10",
+    "tsx": "4.23.11",
     "typescript": "6.0.3",
     "vitest": "4.1.10",
     "zod": "4.4.3"
