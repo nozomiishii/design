@@ -32,5 +32,11 @@
     "lefthook": "2.1.10",
     "prettier": "3.9.6"
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.21.0",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "error"
+    }
+  }
 }
