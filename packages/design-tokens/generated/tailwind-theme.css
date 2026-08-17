@@ -6,13 +6,17 @@
 @import "tailwindcss";
 
 @theme {
+  /* ページ全体の背景色 */
   --color-background: rgb(100% 100% 100%);
+  /* 本文テキストの色 */
   --color-text: rgb(6.6667% 6.6667% 6.6667%);
 }
 
 @custom-variant dark ([data-theme="dark"] &);
 
 @variant dark {
+  /* ページ全体の背景色 */
   --color-background: rgb(6.6667% 6.6667% 6.6667%);
+  /* 本文テキストの色 */
   --color-text: rgb(93.333% 93.333% 93.333%);
 }
