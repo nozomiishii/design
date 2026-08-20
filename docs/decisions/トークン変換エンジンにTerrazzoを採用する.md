@@ -1,24 +1,42 @@
+---
+status: accepted
+date: 2026-07-06
+---
+
 # トークン変換エンジンに Terrazzo を採用する
 
-Status: accepted
-Date: 2026-07-06
+## 背景と課題
 
-## Context — 判断を迫られた状況
+DTCG JSON から CSS と Tailwind の出力を作る変換エンジンを選ぶ。用途は Web と Tailwind CSS v4 だけ。
 
-候補は Style Dictionary v5（事実上の標準）と Terrazzo v2.4（DTCG 専業）。
-用途は Web + Tailwind CSS v4 のみで、Tokens Studio の方言機能は
-使わない方針が先に決まっていた（純DTCGハブの ADR を参照）。
-比較の経緯は [#2995](https://github.com/nozomiishii/dev/pull/2995) を参照。
+[ハブを純DTCG に保つ](<デザイントークンの真実の源はGit上の純DTCG JSONにする.md>)決定が先にあるので、Tokens Studio の方言機能は使わない。
 
-## Decision — 決めたこと
+## 検討した選択肢
 
-Terrazzo を採用する。決め手は Tailwind v4 公式プラグイン、
-DTCG 2025.10 リゾルバへの先行対応、lint の内蔵。
-Style Dictionary は Tailwind v4 出力が自作 format になる。
+比較は [dev の PR](https://github.com/nozomiishii/dev/pull/2995) で行った。
 
-## Consequences — 決定がもたらすもの
+- Style Dictionary v5: 事実上の標準。Tailwind v4 の出力は自作 format になる
+- Terrazzo v2.4: DTCG 専業
 
-- Terrazzo は小規模チーム開発でバス係数リスクがある。ただしハブが
-  純DTCGなので Style Dictionary への乗り換えは設定の書き換えで済む
-- Terrazzo lint はデフォルトコンテキストしか検査しない（実測）。
-  全コンテキストの検査は `src/tokens-check.ts` で補完する
+## 決定
+
+Terrazzo を採用する。決め手は 3 つ。
+
+- Tailwind v4 の公式プラグインがある
+- DTCG 2025.10 のリゾルバに先行対応している
+- lint を内蔵している
+
+## 結果
+
+### 良くなったこと
+
+- Tailwind v4 の出力を自作 format なしで保守できる
+
+### 引き受けたコスト
+
+- Terrazzo は小規模チームの開発でバス係数のリスクがある。ハブが純DTCG なので、Style Dictionary への乗り換えは設定の書き換えで済む
+- Terrazzo の lint はデフォルトコンテキストしか検査しないことを実測で確認した。全コンテキストの検査は `src/tokens-check.ts` で補う
+
+### 保留した論点
+
+なし

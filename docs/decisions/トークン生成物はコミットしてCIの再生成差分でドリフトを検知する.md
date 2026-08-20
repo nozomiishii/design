@@ -1,25 +1,55 @@
+---
+status: accepted
+date: 2026-07-06
+---
+
 # トークン生成物はコミットして CI の再生成差分でドリフトを検知する
 
-Status: accepted
-Date: 2026-07-06
+## 背景と課題
 
-## Context — 判断を迫られた状況
+このトークン基盤の目的は Figma とコードのずれを防ぐこと。生成物には手編集と再生成忘れが起こりうる。
 
-基盤の目的は Figma とコードのずれを防ぐこと。生成物（theme.css 等）を
-コミットしないと、手編集や再生成忘れによるずれを検知する場所がない。
-ルートの .gitignore は dist を全域無視している。また prettier が
-生成物を再整形すると、再生成の差分比較と衝突する。
-経緯は [#2995](https://github.com/nozomiishii/dev/pull/2995) を参照。
+検討は [dev の PR](https://github.com/nozomiishii/dev/pull/2995) で行った。
 
-## Decision — 決めたこと
+## 検討した選択肢
 
-出力先を `generated/` にしてコミット対象とする。build は生成直後に
-prettier を通して冪等化する。CI は test → lint → build →
-`git diff --exit-code` の順で、差分が出たら落とす。
+### ドリフトの検知
 
-## Consequences — 決定がもたらすもの
+| 選択肢 | 評価 |
+| --- | --- |
+| 生成物をコミットしない | 検知する場所がない |
+| コミットして CI の再生成差分を見る | ずれが差分として出る |
 
-- トークン変更 PR は必ず再生成済みの生成物を含む。TokensBrücke 経路は
-  sync CI が自動でコミットする
-- 生成物の手編集は CI で必ず露見する
-- lint の抑制はせず、生成と整形の順序で prettier と共存させた
+### 出力先
+
+| 選択肢 | 評価 |
+| --- | --- |
+| `dist/` | ルートの .gitignore が全域無視している |
+| `generated/` | 無視の対象外で、そのままコミットできる |
+
+### prettier との衝突
+
+| 選択肢 | 評価 |
+| --- | --- |
+| 生成物を prettier の対象から外す | lint の抑制になる |
+| build の中で prettier を通す | 整形済みの状態が生成物になり、再整形しても差分が出ない |
+
+## 決定
+
+出力先を `generated/` にしてコミット対象とする。build は生成直後に prettier を通し、整形済みの状態を生成物にする。
+
+CI は test → lint → build → `git diff --exit-code` の順で走り、差分が出たら落とす。
+
+## 結果
+
+### 良くなったこと
+
+- 生成物の手編集と再生成忘れを CI が必ず落とす
+
+### 引き受けたコスト
+
+- 手でトークンを変える PR は、再生成した生成物も一緒にコミットする。TokensBrücke 経路は design-tokens-sync の CI が自動でコミットする
+
+### 保留した論点
+
+なし

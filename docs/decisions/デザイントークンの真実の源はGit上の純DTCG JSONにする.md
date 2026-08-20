@@ -1,25 +1,40 @@
+---
+status: accepted
+date: 2026-07-06
+---
+
 # デザイントークンの真実の源は Git 上の純DTCG JSON にする
 
-Status: accepted
-Date: 2026-07-06
+## 背景と課題
 
-## Context — 判断を迫られた状況
+トークンの書き手は Figma・AI デザインツール・人間と複数いる。
 
-Figma・AIデザインツール・人間と、トークンの書き手が複数いる。
-ツール方言（Tokens Studio の数式、TokensBrücke の `$extensions.mode`）を
-ハブに入れると、読む側全員が方言知識を持たない限り誤読する。
-実測では素の Style Dictionary が `"8*2"` をエラーなしで `8rem` に変換した。
-検討の経緯は [#2995](https://github.com/nozomiishii/dev/pull/2995) を参照。
+ツール方言をハブに入れると、読む側全員が方言の知識を持たない限り誤読する。実測では、素の Style Dictionary が数式の `"8*2"` をエラーなしで `8rem` に変換した。
 
-## Decision — 決めたこと
+## 検討した選択肢
 
-`packages/design-tokens/tokens/` のモード別 DTCG 2025.10 JSON と
-リゾルバ文書を唯一の真実の源とする。方言はハブ手前の変換で吸収し、
-全ての書き手は PR としてここに収束させる。
+検討は [dev の PR](https://github.com/nozomiishii/dev/pull/2995) で行った。
 
-## Consequences — 決定がもたらすもの
+- 方言込みで持つ: Tokens Studio の数式や TokensBrücke の `$extensions.mode` をそのまま置く。書き手のツールを選ばない
+- 純DTCG で持つ: 輸送形式ごとに正規化の処理が要る
 
-- エンジン（Terrazzo / Style Dictionary）と橋（TokensBrücke / 公式）が
-  交換可能な部品になる
-- 輸送形式ごとに正規化の糊が要る（`src/split-figma-push.ts` 等）
-- AI がトークンを読むとき前処理なしで正しく解釈できる
+## 決定
+
+`packages/design-tokens/tokens/` のモード別 DTCG 2025.10 JSON と、それを束ねる `tokens.resolver.json` を唯一の真実の源とする。
+
+方言はハブ手前の変換で吸収し、全ての書き手は PR としてここに収束させる。
+
+## 結果
+
+### 良くなったこと
+
+- エンジンの Terrazzo / Style Dictionary と、橋の TokensBrücke / 公式エクスポートが交換可能な部品になる
+- AI がトークンを読むとき、前処理なしで正しく解釈できる
+
+### 引き受けたコスト
+
+- 輸送形式ごとに正規化の糊が要る。TokensBrücke の push は `src/split-figma-push.ts`、公式エクスポートは `src/import-figma-export.ts` が受ける
+
+### 保留した論点
+
+なし
