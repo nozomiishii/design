@@ -32,10 +32,6 @@
     "lefthook": "2.1.10",
     "prettier": "3.9.6"
   },
-  "packageManager": "pnpm@11.22.0",
-  "engines": {
-    "node": "24.19.0"
-  },
   "devEngines": {
     "runtime": {
       "name": "node",
@@ -44,6 +40,7 @@
     },
     "packageManager": {
       "name": "pnpm",
+      "version": "11.22.0",
       "onFail": "error"
     }
   }
