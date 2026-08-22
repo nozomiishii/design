@@ -44,6 +44,8 @@ jobs:
               - 'packages/design-tokens/**'
               - '.github/workflows/design-tokens-ci.yaml'
               - '.github/actions/setup-node/action.yaml'
+              - 'mise.toml'
+              - 'mise.lock'
 
   check:
     needs: changes
