@@ -43,7 +43,7 @@ jobs:
           cache: ${{ runner.environment == 'github-hosted' }}
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install --ignore-scripts
 
       - name: Split modes
         run: pnpm exec tsx src/split-figma-push.ts
