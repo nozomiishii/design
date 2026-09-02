@@ -13,10 +13,10 @@ import { fileURLToPath } from "node:url";
 
 const KNOWN_MODES = ["light", "dark"];
 
-export type ImportPlan = {
+export interface ImportPlan {
   destination: string;
   source: string;
-};
+}
 
 /**
  * エクスポートフォルダを読み、コピー計画を返す。
@@ -31,7 +31,7 @@ export function planImport(exportDir: string, tokensDir: string): ImportPlan[] {
 
   return files.map((file) => {
     const source = path.join(exportDir, file);
-    const document = JSON.parse(readFileSync(source, "utf8")) as {
+    const document = JSON.parse(readFileSync(source, "utf-8")) as {
       $extensions?: Record<string, unknown>;
     };
     const modeName = document.$extensions?.["com.figma.modeName"];

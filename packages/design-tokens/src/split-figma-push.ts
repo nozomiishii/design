@@ -15,10 +15,10 @@ const KNOWN_MODES = ["light", "dark"];
 
 type TokenGroup = Record<string, unknown>;
 
-type TokenNode = {
+interface TokenNode {
   $extensions?: { mode?: Record<string, unknown> };
   $value?: unknown;
-};
+}
 
 /**
  * $extensions.mode を持つトークン群を、モードごとの純DTCGグループに分割する。
@@ -67,7 +67,7 @@ if (isMain) {
     process.argv[2] ?? path.join(packageDir, "figma-export.tokens.json"),
   );
 
-  const group = JSON.parse(readFileSync(inputPath, "utf8")) as TokenGroup;
+  const group = JSON.parse(readFileSync(inputPath, "utf-8")) as TokenGroup;
   const byMode = splitByMode(group, KNOWN_MODES);
 
   for (const [mode, tokens] of Object.entries(byMode)) {

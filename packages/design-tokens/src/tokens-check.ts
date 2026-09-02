@@ -15,27 +15,27 @@ export const CONTRAST_PAIRS = [
 
 export const WCAG_AA_MIN_CONTRAST = 4.5;
 
-export type CheckError = {
+export interface CheckError {
   context: string;
   message: string;
-};
+}
 
 export type FlatTokens = Map<string, ColorValue>;
 
-type ColorValue = {
+interface ColorValue {
   alpha?: number;
   colorSpace: string;
   components: [number, number, number];
   hex?: string;
-};
+}
 
-type ResolverDocument = {
+interface ResolverDocument {
   modifiers: {
     theme: {
       contexts: Record<string, { $ref: string }[]>;
     };
   };
-};
+}
 
 /**
  * 全コンテキストで CONTRAST_PAIRS のコントラスト比を検査する。
@@ -141,7 +141,7 @@ export function flattenTokens(group: Record<string, unknown>, prefix = ""): Flat
  * リゾルバ文書からコンテキストごとの平坦化済みトークンを読み込む。
  */
 export function loadContexts(resolverPath: string): Map<string, FlatTokens> {
-  const resolver = JSON.parse(readFileSync(resolverPath, "utf8")) as ResolverDocument;
+  const resolver = JSON.parse(readFileSync(resolverPath, "utf-8")) as ResolverDocument;
   const baseDir = path.dirname(resolverPath);
 
   const contexts = new Map<string, FlatTokens>();
@@ -150,10 +150,9 @@ export function loadContexts(resolverPath: string): Map<string, FlatTokens> {
     const merged: FlatTokens = new Map();
 
     for (const source of sources) {
-      const tokens = JSON.parse(readFileSync(path.resolve(baseDir, source.$ref), "utf8")) as Record<
-        string,
-        unknown
-      >;
+      const tokens = JSON.parse(
+        readFileSync(path.resolve(baseDir, source.$ref), "utf-8"),
+      ) as Record<string, unknown>;
 
       for (const [id, value] of flattenTokens(tokens)) {
         merged.set(id, value);

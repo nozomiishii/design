@@ -69,7 +69,7 @@ if (isMain) {
   const designMdPath = path.resolve(packageDir, "DESIGN.md");
   const contexts = loadContexts(path.resolve(packageDir, "tokens.resolver.json"));
 
-  const document = readFileSync(designMdPath, "utf8");
+  const document = readFileSync(designMdPath, "utf-8");
   const updated = replaceGeneratedSection(document, renderTokensSection(contexts));
   writeFileSync(designMdPath, updated);
   console.warn("✔ DESIGN.md の値セクションを再生成");
