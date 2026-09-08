@@ -71,6 +71,6 @@ Figma でコレクションを右クリック → Export to JSON でモード別
 TokensBrücke が使えないときは `pnpm import:figma` で取り込む。
 
 公式エクスポートには Git 連携・PR 作成がまだなく、composite tokens
-（typography / shadow / gradient）も未対応。対応状況は毎月5日の routine
-（nozomiishii/brain の monthly-figma-dtcg-export-watch）が監視しており、
-公式が揃い次第この橋を公式機能へ差し替える。
+（typography / shadow / gradient）も未対応。対応状況は nozomiishii/brain の
+[monthly-08-design-tokens-watch](https://github.com/nozomiishii/brain/blob/main/.routines/monthly-08-design-tokens-watch.md)
+が毎月 8 日に監視し、結果をこの repo の issue に立てる。公式が揃い次第この橋を公式機能へ差し替える。
