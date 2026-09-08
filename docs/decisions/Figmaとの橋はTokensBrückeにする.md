@@ -34,4 +34,4 @@ TokensBrücke の GitHub PR push を正の経路にする。公式エクスポ�
 
 ### 保留した論点
 
-- 公式が Git / PR 連携と composite tokens への対応を出したら橋を差し替える。brain の monthly-figma-dtcg-export-watch routine が毎月監視している
+- 公式が Git / PR 連携と composite tokens への対応を出したら橋を差し替える。brain の monthly-08-design-tokens-watch routine が毎月監視している
