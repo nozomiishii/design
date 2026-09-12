@@ -22,7 +22,7 @@
     "@terrazzo/cli": "2.7.1",
     "@terrazzo/plugin-css": "2.7.1",
     "@terrazzo/plugin-tailwind": "2.7.1",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "@vitest/coverage-v8": "5.0.0",
     "tsx": "4.23.13",
     "typescript": "6.0.3",
