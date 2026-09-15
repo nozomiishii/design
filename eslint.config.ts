@@ -7,7 +7,7 @@ export default defineConfig([
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ["eslint.config.ts", "prettier.config.ts", "commitlint.config.ts"],
+          allowDefaultProject: ["eslint.config.ts", "oxfmt.config.ts", "commitlint.config.ts"],
         },
       },
     },

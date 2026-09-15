@@ -11,7 +11,7 @@
     "./tailwind-theme.css": "./generated/tailwind-theme.css"
   },
   "scripts": {
-    "build": "tz build && tsx src/generate-design-md.ts && pnpm --workspace-root exec prettier --write packages/design-tokens/generated packages/design-tokens/DESIGN.md",
+    "build": "tz build && tsx src/generate-design-md.ts && pnpm --workspace-root exec oxfmt packages/design-tokens/generated",
     "import:figma": "tsx src/import-figma-export.ts",
     "lint": "tz lint && tsx src/tokens-check.ts",
     "test": "vitest",
