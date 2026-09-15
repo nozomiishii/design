@@ -27,16 +27,16 @@ date: 2026-07-06
 | `dist/` | ルートの .gitignore が全域無視している |
 | `generated/` | 無視の対象外で、そのままコミットできる |
 
-### prettier との衝突
+### フォーマッタとの衝突
 
 | 選択肢 | 評価 |
 | --- | --- |
-| 生成物を prettier の対象から外す | lint の抑制になる |
-| build の中で prettier を通す | 整形済みの状態が生成物になり、再整形しても差分が出ない |
+| 生成物をフォーマッタの対象から外す | lint の抑制になる |
+| build の中でフォーマッタを通す | 整形済みの状態が生成物になり、再整形しても差分が出ない |
 
 ## 決定
 
-出力先を `generated/` にしてコミット対象とする。build は生成直後に prettier を通し、整形済みの状態を生成物にする。
+出力先を `generated/` にしてコミット対象とする。build は生成直後に `generated/` を oxfmt で整形し、整形済みの状態を生成物にする。`DESIGN.md` は共有の oxfmt config が markdown を整形しないので、生成したままを生成物にする。
 
 CI は test → lint → build → `git diff --exit-code` の順で走り、差分が出たら落とす。
 
