@@ -27,7 +27,7 @@
     "tsx": "4.23.13",
     "typescript": "6.0.3",
     "vitest": "5.0.0",
-    "zod": "4.6.4"
+    "zod": "4.6.5"
   },
   "devEngines": {
     "runtime": {
