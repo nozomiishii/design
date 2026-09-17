@@ -33,7 +33,7 @@
     "@nozomiishii/tsconfig": "2.7.0",
     "eslint": "10.10.0",
     "lefthook": "2.1.14",
-    "oxfmt": "0.67.0"
+    "oxfmt": "0.68.0"
   },
   "devEngines": {
     "packageManager": {
