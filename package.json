@@ -31,7 +31,7 @@
     "@nozomiishii/oxfmt-config": "2.7.1",
     "@nozomiishii/postinstall": "2.7.1",
     "@nozomiishii/tsconfig": "2.7.1",
-    "eslint": "10.10.0",
+    "eslint": "10.11.0",
     "lefthook": "2.1.14",
     "oxfmt": "0.68.0"
   },
