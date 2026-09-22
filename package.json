@@ -25,12 +25,12 @@
     "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
-    "@nozomiishii/commitlint-config": "2.7.1",
-    "@nozomiishii/eslint-config": "2.7.1",
-    "@nozomiishii/lefthook-config": "2.7.1",
-    "@nozomiishii/oxfmt-config": "2.7.1",
-    "@nozomiishii/postinstall": "2.7.1",
-    "@nozomiishii/tsconfig": "2.7.1",
+    "@nozomiishii/commitlint-config": "2.7.2",
+    "@nozomiishii/eslint-config": "2.7.2",
+    "@nozomiishii/lefthook-config": "2.7.2",
+    "@nozomiishii/oxfmt-config": "2.7.2",
+    "@nozomiishii/postinstall": "2.7.2",
+    "@nozomiishii/tsconfig": "2.7.2",
     "eslint": "10.11.0",
     "lefthook": "2.1.14",
     "oxfmt": "0.68.0"
