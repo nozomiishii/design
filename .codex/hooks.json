@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.hooks/setup.sh\"",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
+  }
+}
