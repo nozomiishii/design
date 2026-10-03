@@ -3,11 +3,6 @@ name: Design Tokens CI
 on:
   workflow_dispatch:
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -22,7 +17,6 @@ defaults:
 
 jobs:
   changes:
-    if: ${{ !github.event.pull_request.draft }}
     runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
