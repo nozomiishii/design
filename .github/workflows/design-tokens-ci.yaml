@@ -85,6 +85,4 @@ jobs:
       - name: Fail if any required job failed or was cancelled
         if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
         working-directory: ${{ github.workspace }}
-        run: |
-          echo "A required job failed or was cancelled"
-          exit 1
+        run: exit 1
