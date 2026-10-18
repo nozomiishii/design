@@ -23,10 +23,10 @@
     "@terrazzo/plugin-css": "2.7.1",
     "@terrazzo/plugin-tailwind": "2.7.1",
     "@types/node": "24.19.1",
-    "@vitest/coverage-v8": "5.0.0",
+    "@vitest/coverage-v8": "5.0.5",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
-    "vitest": "5.0.0",
+    "vitest": "5.0.5",
     "zod": "4.6.7"
   },
   "devEngines": {
