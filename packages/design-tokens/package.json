@@ -22,7 +22,7 @@
     "@terrazzo/cli": "2.9.0",
     "@terrazzo/plugin-css": "2.9.0",
     "@terrazzo/plugin-tailwind": "2.9.0",
-    "@types/node": "24.19.1",
+    "@types/node": "24.19.2",
     "@vitest/coverage-v8": "5.0.5",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
@@ -32,7 +32,7 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24.21.0",
+      "version": "24.22.0",
       "onFail": "download"
     }
   }
