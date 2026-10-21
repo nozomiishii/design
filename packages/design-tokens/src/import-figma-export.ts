@@ -1,12 +1,12 @@
 /**
- * Figma 公式エクスポート（コレクションのフォルダ）を tokens/ に取り込む。
- *
- * Figma はモードごとに1ファイルを出力し、ルートの
- * $extensions["com.figma.modeName"] にモード名を持つ。
- * モード名をそのままファイル名（light.tokens.json 等）にする。
- *
- * 使い方: pnpm import:figma <エクスポートフォルダ>
- */
+Figma 公式エクスポート（コレクションのフォルダ）を tokens/ に取り込む。
+
+Figma はモードごとに1ファイルを出力し、ルートの
+$extensions["com.figma.modeName"] にモード名を持つ。
+モード名をそのままファイル名（light.tokens.json 等）にする。
+
+使い方: pnpm import:figma <エクスポートフォルダ>
+*/
 import { copyFileSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -19,9 +19,9 @@ export interface ImportPlan {
 }
 
 /**
- * エクスポートフォルダを読み、コピー計画を返す。
- * モード名が light / dark 以外ならエラー。Figma 側でモード名を直す。
- */
+エクスポートフォルダを読み、コピー計画を返す。
+モード名が light / dark 以外ならエラー。Figma 側でモード名を直す。
+*/
 export function planImport(exportDir: string, tokensDir: string): ImportPlan[] {
   const files = readdirSync(exportDir).filter((file) => file.endsWith(".tokens.json"));
 
