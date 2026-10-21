@@ -1,9 +1,9 @@
 /**
- * DESIGN.md の値セクションをトークンから再生成する。
- *
- * 値はトークンが真実の源。DESIGN.md のマーカー間だけを書き換え、
- * 手書きのルールセクションには触れない。
- */
+DESIGN.md の値セクションをトークンから再生成する。
+
+値はトークンが真実の源。DESIGN.md のマーカー間だけを書き換え、
+手書きのルールセクションには触れない。
+*/
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,8 +13,8 @@ const START_MARKER = "<!-- generated:tokens:start -->";
 const END_MARKER = "<!-- generated:tokens:end -->";
 
 /**
- * コンテキスト別のトークン値を Markdown テーブルにする。
- */
+コンテキスト別のトークン値を Markdown テーブルにする。
+*/
 export function renderTokensSection(contexts: ReturnType<typeof loadContexts>): string {
   const contextNames = contexts.keys().toArray();
   const allIds = new Set<string>();
@@ -48,8 +48,8 @@ export function renderTokensSection(contexts: ReturnType<typeof loadContexts>): 
 }
 
 /**
- * マーカー間を差し替えた本文を返す。
- */
+マーカー間を差し替えた本文を返す。
+*/
 export function replaceGeneratedSection(document: string, section: string): string {
   const start = document.indexOf(START_MARKER);
   const end = document.indexOf(END_MARKER);

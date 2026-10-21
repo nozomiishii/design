@@ -1,12 +1,12 @@
 /**
- * TokensBrücke が push する単一ファイルをモード別ファイルに分割する。
- *
- * TokensBrücke の GitHub PR push は単一 JSON で、複数モードの値は
- * Cobalt 由来の $extensions.mode パターンに入る。ハブ（tokens/）は
- * 純DTCG のモード別ファイルなので、この境界で正規化する。
- *
- * 使い方: tsx src/split-figma-push.ts [入力ファイル]
- */
+TokensBrücke が push する単一ファイルをモード別ファイルに分割する。
+
+TokensBrücke の GitHub PR push は単一 JSON で、複数モードの値は
+Cobalt 由来の $extensions.mode パターンに入る。ハブ（tokens/）は
+純DTCG のモード別ファイルなので、この境界で正規化する。
+
+使い方: tsx src/split-figma-push.ts [入力ファイル]
+*/
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,9 +21,9 @@ interface TokenNode {
 }
 
 /**
- * $extensions.mode を持つトークン群を、モードごとの純DTCGグループに分割する。
- * モード値がないトークンは $value をそのまま使う（Cobalt の既定値の意味論）。
- */
+$extensions.mode を持つトークン群を、モードごとの純DTCGグループに分割する。
+モード値がないトークンは $value をそのまま使う（Cobalt の既定値の意味論）。
+*/
 export function splitByMode(
   group: TokenGroup,
   modes: readonly string[],

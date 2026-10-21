@@ -1,9 +1,9 @@
 /**
- * 全テーマコンテキスト（light / dark）を検査する。
- *
- * terrazzo lint の a11y/min-contrast はデフォルトコンテキストしか見ないため、
- * ここで全コンテキストに対して WCAG コントラストとトークンの過不足を検査する。
- */
+全テーマコンテキスト（light / dark）を検査する。
+
+terrazzo lint の a11y/min-contrast はデフォルトコンテキストしか見ないため、
+ここで全コンテキストに対して WCAG コントラストとトークンの過不足を検査する。
+*/
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -38,8 +38,8 @@ interface ResolverDocument {
 }
 
 /**
- * 全コンテキストで CONTRAST_PAIRS のコントラスト比を検査する。
- */
+全コンテキストで CONTRAST_PAIRS のコントラスト比を検査する。
+*/
 export function checkContrast(
   contexts: Map<string, FlatTokens>,
   pairs: readonly { background: string; foreground: string }[],
@@ -69,9 +69,9 @@ export function checkContrast(
 }
 
 /**
- * 全コンテキストのトークンIDが一致するか検査する。
- * 片方のモードにだけトークンを追加した事故を検出する。
- */
+全コンテキストのトークンIDが一致するか検査する。
+片方のモードにだけトークンを追加した事故を検出する。
+*/
 export function checkParity(contexts: Map<string, FlatTokens>): CheckError[] {
   const errors: CheckError[] = [];
   const allIds = new Set<string>();
@@ -97,8 +97,8 @@ export function checkParity(contexts: Map<string, FlatTokens>): CheckError[] {
 }
 
 /**
- * WCAG 2.1 のコントラスト比。1(同色) 〜 21(白黒)。
- */
+WCAG 2.1 のコントラスト比。1(同色) 〜 21(白黒)。
+*/
 export function contrastRatio(a: [number, number, number], b: [number, number, number]): number {
   const la = relativeLuminance(a);
   const lb = relativeLuminance(b);
@@ -108,8 +108,8 @@ export function contrastRatio(a: [number, number, number], b: [number, number, n
 }
 
 /**
- * DTCG トークングループを `color.text` 形式のIDに平坦化する。
- */
+DTCG トークングループを `color.text` 形式のIDに平坦化する。
+*/
 export function flattenTokens(group: Record<string, unknown>, prefix = ""): FlatTokens {
   const result: FlatTokens = new Map();
 
@@ -138,8 +138,8 @@ export function flattenTokens(group: Record<string, unknown>, prefix = ""): Flat
 }
 
 /**
- * リゾルバ文書からコンテキストごとの平坦化済みトークンを読み込む。
- */
+リゾルバ文書からコンテキストごとの平坦化済みトークンを読み込む。
+*/
 export function loadContexts(resolverPath: string): Map<string, FlatTokens> {
   const resolver = JSON.parse(readFileSync(resolverPath, "utf-8")) as ResolverDocument;
   const baseDir = path.dirname(resolverPath);
@@ -165,8 +165,8 @@ export function loadContexts(resolverPath: string): Map<string, FlatTokens> {
 }
 
 /**
- * WCAG 2.1 の相対輝度。components は 0-1 の sRGB。
- */
+WCAG 2.1 の相対輝度。components は 0-1 の sRGB。
+*/
 export function relativeLuminance(components: [number, number, number]): number {
   const [r, g, b] = components.map((c) =>
     c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4,
