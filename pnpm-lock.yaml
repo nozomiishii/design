@@ -203,14 +203,14 @@ importers:
         specifier: 2.8.1
         version: 2.8.1
       '@terrazzo/cli':
-        specifier: 2.9.0
-        version: 2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
+        specifier: 2.10.0
+        version: 2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
       '@terrazzo/plugin-css':
         specifier: 2.9.0
-        version: 2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0))
+        version: 2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))
       '@terrazzo/plugin-tailwind':
         specifier: 2.9.0
-        version: 2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.9.0)(tailwindcss@4.3.3)
+        version: 2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.10.0)(tailwindcss@4.3.3)
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
@@ -1420,8 +1420,8 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
 
-  '@terrazzo/cli@2.9.0':
-    resolution: {integrity: sha512-5d4p/mM7UEL8N2hIcfSOzg6uhx44zaSZ7rvoqujXrHTocHijpfaV9uC3bbZ0X8HHhHc7N1Q22RaL3fr5KPLtkw==}
+  '@terrazzo/cli@2.10.0':
+    resolution: {integrity: sha512-840Ilp4Za3J9zpuKDneYZ+uKtynBzdkJPK3TzjvkqbUkqDKyb1czTP8KVOMF8gtpShDKaP44xDYeCY5vgUBFxA==}
     hasBin: true
 
   '@terrazzo/json-schema-tools@0.3.0':
@@ -1433,8 +1433,8 @@ packages:
       yaml-to-momoa:
         optional: true
 
-  '@terrazzo/parser@2.9.0':
-    resolution: {integrity: sha512-ocNKroc6jzRGNvCIn+CpqwQGWLUC7xJ85mXHBbDXV57ynBrMgs09V8DXrsqW3MTYMJU3uUnCMTw99UdBzcPWcA==}
+  '@terrazzo/parser@2.10.0':
+    resolution: {integrity: sha512-I5l5x4CNUKjTF4Xcx7EkYEbjS9nIuAauW+J3AIuMBlBCLlBGjIdVHJ4m1DOM+afXeRCktvELP5Kzo8ecSz09zw==}
     peerDependencies:
       yaml-to-momoa: 0.1.0
     peerDependenciesMeta:
@@ -1456,11 +1456,11 @@ packages:
       '@terrazzo/token-tools': ^2.9.0
       tailwindcss: ^4.0.0
 
-  '@terrazzo/token-tools@2.9.0':
-    resolution: {integrity: sha512-JcZvJmTu1I/Nbqa0KaFu0nVTk/QRebdDFtvCWtffbPKGfM1msuN8+XwAOJdGLH7vwKCkBCxmBP+VPVp7br82JA==}
+  '@terrazzo/token-tools@2.10.0':
+    resolution: {integrity: sha512-L06Aw59uESXbGnagSajEDBr3E8hQl0jJlsy8opwgQOvJFhxMT4dGCcOsRCh+nTfGA4uipJ8pWyQgVRW0uaUihw==}
 
-  '@terrazzo/token-types@2.9.0':
-    resolution: {integrity: sha512-fEn5HwMZb96XIPBBmKWpb6pVS6OaM1wTxGCIt2k4toeBr33HLTBbQplYafaMc4trXqeoAitn4msjL9bpDjuH1w==}
+  '@terrazzo/token-types@2.10.0':
+    resolution: {integrity: sha512-93HnrQPUFsZv0k9Z2L0zsxwd2IVLmoI78TwfnHhKPDnGrE+hVyzYRlFi/5ihspNFIbfnXMHW1EmxeiF9m6UPiQ==}
 
   '@tybys/wasm-util@0.10.4':
     resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
@@ -1967,10 +1967,6 @@ packages:
     resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  detect-package-manager@3.0.2:
-    resolution: {integrity: sha512-8JFjJHutStYrfWwzfretQoyNGoZVW1Fsrp4JO9spa7h/fBfwgTMEIy4/LBzRDGsxwVPHU0q+T9YvwLDJoOApLQ==}
-    engines: {node: '>=12'}
-
   devframe@1.2.3:
     resolution: {integrity: sha512-IIe9q99/B4OS2IQ4LNk9H2NFXvWxdLteM1C2OFbpAFIQ4cWLpzmsfWsuwF3VfVclXhKl/MniNwv4vz4a+5CumA==}
     hasBin: true
@@ -2363,10 +2359,6 @@ packages:
     resolution: {integrity: sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA==}
     engines: {node: '>=18.0.0'}
 
-  execa@5.1.1:
-    resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
-    engines: {node: '>=10'}
-
   expect-type@1.4.0:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
@@ -2451,10 +2443,6 @@ packages:
     resolution: {integrity: sha512-XjH1AECxf0giL2V1aU8vKyRR2ppRUb5c0EvT7zuJTokQ74bNo52zOtghqdWIqrhUD79fo3x0WfKZdOqxF6LG1Q==}
     engines: {node: '>=18'}
 
-  get-stream@6.0.1:
-    resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
-    engines: {node: '>=10'}
-
   get-tsconfig@4.14.3:
     resolution: {integrity: sha512-++QEw4DIY7WGoukz+/+A/8dGYPT9l9yIadnmSgZ8Rjr3YVSVDipQSO9CdnJo9ePqFqUUqh+wk9uIaoiAwsiPkA==}
 
@@ -2531,10 +2519,6 @@ packages:
   html-entities@2.6.0:
     resolution: {integrity: sha512-kig+rMn/QOVRvr7c86gQ8lWXq+Hkv6CbAH1hLu+RG338StTpE8Z0b44SDVaqVu7HGKf27frdmUYEs9hTUX/cLQ==}
 
-  human-signals@2.1.0:
-    resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
-    engines: {node: '>=10.17.0'}
-
   identifier-regex@1.1.0:
     resolution: {integrity: sha512-SLX4H/vtcYlYnL7XqnuJKHU7Z8517TgsW9nmQiGOgMCjQ8V/deLYu6bEmbGoXe7WMMhc9+EUGyFFneHja8KabA==}
     engines: {node: '>=18'}
@@ -2588,10 +2572,6 @@ packages:
   is-plain-obj@4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
     engines: {node: '>=12'}
-
-  is-stream@2.0.1:
-    resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
-    engines: {node: '>=8'}
 
   is-what@4.1.16:
     resolution: {integrity: sha512-ZhMwEosbFJkA0YhFnNDgTM4ZxDRsS6HqTo7qsZM08fehyRYIYa0yHu5R6mgo1n/8MgaPBXiPimPD77baVFYg+A==}
@@ -2836,9 +2816,6 @@ packages:
     resolution: {integrity: sha512-eRtbOb1N5iyH0tkQDAoQ4Ipsp/5qSR79Dzrz8hEPxRX10RWWR/iQXdoKmBSRCThY1Fh5EhISDtpSc93fpxUniQ==}
     engines: {node: '>=12.13'}
 
-  merge-stream@2.0.0:
-    resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
-
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -2918,10 +2895,6 @@ packages:
     resolution: {integrity: sha512-X5ju04+cAzsojXKes0B/S4tcYtFAJ6tTMuSPBEn9CPGlrWr8Fiw7qYeLT0XyH80HSoAoqWCaz+MWKh22P7G1cw==}
     engines: {node: '>=16'}
     hasBin: true
-
-  mimic-fn@2.1.0:
-    resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
-    engines: {node: '>=6'}
 
   minimatch@10.2.6:
     resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
@@ -3093,10 +3066,6 @@ packages:
     resolution: {integrity: sha512-IciCE3SY3uE84Ld8WZU23gAPPV9rIYod4F+rc+vJ7h7cwAJt9Vk6TVsK60ry7Uj3SRS3bqRRIGuTp9YVlk6WNA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  npm-run-path@4.0.1:
-    resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
-    engines: {node: '>=8'}
-
   object-deep-merge@2.0.1:
     resolution: {integrity: sha512-aKttDKcU3pyZqKcCkDhsMn70WmZFG2JGDQLP9EcLyTSIFQRCPWLAmBZRLJnrVUrhPG1jETEEbfdgbNtJf1LyMg==}
 
@@ -3110,10 +3079,6 @@ packages:
 
   ohash@2.0.12:
     resolution: {integrity: sha512-65S/5gk9YSsaRjcyf7Nfa6h/d3E8/1gslpXfI4W7Dxn/oap8IKRuNT5VXkLQ1YFKIEg4apRY4Pj6aiwFzrDdmw==}
-
-  onetime@5.1.2:
-    resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
-    engines: {node: '>=6'}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -3149,6 +3114,9 @@ packages:
   package-json-validator@1.6.1:
     resolution: {integrity: sha512-eyl3DGFoxdUO0RA1Ym+H11S6P2XWIlA6Sy2PbvslbwFJ14kkz+FgX1Br3MaebrvLY3Q10Iih3PsL3741vsevrA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+
+  package-manager-detector@1.9.0:
+    resolution: {integrity: sha512-zAMfbta9nPA8AKkA4WdmNAT8R8s6Dk0/xwPsqNnRidMFcLo1YkLuPDTgs2f64XdzS8vbLNnoJ+uUIkgbz7oRHA==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -3303,9 +3271,6 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  signal-exit@3.0.7:
-    resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
-
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
@@ -3373,10 +3338,6 @@ packages:
   strip-bom@3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
-
-  strip-final-newline@2.0.0:
-    resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
-    engines: {node: '>=6'}
 
   strip-indent@4.1.1:
     resolution: {integrity: sha512-SlyRoSkdh1dYP0PzclLE7r0M9sgbFKKMFXpFRUMNuKhQSbC6VQIGzq3E0qsfvGJaUFJPGv6Ws1NZ/haTAjfbMA==}
@@ -4748,20 +4709,20 @@ snapshots:
       - supports-color
       - typescript
 
-  '@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)':
+  '@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)':
     dependencies:
       '@clack/prompts': 1.8.1
       '@humanwhocodes/momoa': 3.3.13
       '@terrazzo/json-schema-tools': 0.3.0(@humanwhocodes/momoa@3.3.13)(yaml-to-momoa@0.1.0)
-      '@terrazzo/parser': 2.9.0(yaml-to-momoa@0.1.0)
-      '@terrazzo/token-tools': 2.9.0
+      '@terrazzo/parser': 2.10.0(yaml-to-momoa@0.1.0)
+      '@terrazzo/token-tools': 2.10.0
       chokidar: 5.0.0
-      detect-package-manager: 3.0.2
       dtcg-examples: 1.1.3
       escodegen: 2.1.0
       merge-anything: 5.1.7
       meriyah: 7.4.0
       mime: 4.1.0
+      package-manager-detector: 1.9.0
       picocolors: 1.1.1
       scule: 1.3.0
       vite: 8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
@@ -4787,12 +4748,12 @@ snapshots:
     optionalDependencies:
       yaml-to-momoa: 0.1.0
 
-  '@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0)':
+  '@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)':
     dependencies:
       '@humanwhocodes/momoa': 3.3.13
       '@terrazzo/json-schema-tools': 0.3.0(@humanwhocodes/momoa@3.3.13)(yaml-to-momoa@0.1.0)
-      '@terrazzo/token-tools': 2.9.0
-      '@terrazzo/token-types': 2.9.0
+      '@terrazzo/token-tools': 2.10.0
+      '@terrazzo/token-types': 2.10.0
       '@types/babel__code-frame': 7.27.0
       colorjs.io: 0.7.1
       merge-anything: 5.1.7
@@ -4801,28 +4762,28 @@ snapshots:
     optionalDependencies:
       yaml-to-momoa: 0.1.0
 
-  '@terrazzo/plugin-css@2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0))':
+  '@terrazzo/plugin-css@2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))':
     dependencies:
-      '@terrazzo/cli': 2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
-      '@terrazzo/parser': 2.9.0(yaml-to-momoa@0.1.0)
-      '@terrazzo/token-tools': 2.9.0
+      '@terrazzo/cli': 2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
+      '@terrazzo/parser': 2.10.0(yaml-to-momoa@0.1.0)
+      '@terrazzo/token-tools': 2.10.0
 
-  '@terrazzo/plugin-tailwind@2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.9.0)(tailwindcss@4.3.3)':
+  '@terrazzo/plugin-tailwind@2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.10.0)(tailwindcss@4.3.3)':
     dependencies:
-      '@terrazzo/cli': 2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
-      '@terrazzo/parser': 2.9.0(yaml-to-momoa@0.1.0)
-      '@terrazzo/plugin-css': 2.9.0(@terrazzo/cli@2.9.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.9.0(yaml-to-momoa@0.1.0))
-      '@terrazzo/token-tools': 2.9.0
+      '@terrazzo/cli': 2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
+      '@terrazzo/parser': 2.10.0(yaml-to-momoa@0.1.0)
+      '@terrazzo/plugin-css': 2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))
+      '@terrazzo/token-tools': 2.10.0
       tailwindcss: 4.3.3
 
-  '@terrazzo/token-tools@2.9.0':
+  '@terrazzo/token-tools@2.10.0':
     dependencies:
       '@humanwhocodes/momoa': 3.3.13
-      '@terrazzo/token-types': 2.9.0
+      '@terrazzo/token-types': 2.10.0
       colorjs.io: 0.7.1
       wildcard-match: 5.1.6
 
-  '@terrazzo/token-types@2.9.0': {}
+  '@terrazzo/token-types@2.10.0': {}
 
   '@tybys/wasm-util@0.10.4':
     dependencies:
@@ -5268,10 +5229,6 @@ snapshots:
   detect-libc@2.1.2: {}
 
   detect-newline@4.0.1: {}
-
-  detect-package-manager@3.0.2:
-    dependencies:
-      execa: 5.1.1
 
   devframe@1.2.3(@devframes/agentic@1.2.3)(cac@7.0.1)(srvx@1.0.5):
     dependencies:
@@ -5805,18 +5762,6 @@ snapshots:
     dependencies:
       eventsource-parser: 3.1.1
 
-  execa@5.1.1:
-    dependencies:
-      cross-spawn: 7.0.6
-      get-stream: 6.0.1
-      human-signals: 2.1.0
-      is-stream: 2.0.1
-      merge-stream: 2.0.0
-      npm-run-path: 4.0.1
-      onetime: 5.1.2
-      signal-exit: 3.0.7
-      strip-final-newline: 2.0.0
-
   expect-type@1.4.0: {}
 
   fast-deep-equal@3.1.3: {}
@@ -5889,8 +5834,6 @@ snapshots:
 
   get-east-asian-width@1.7.0: {}
 
-  get-stream@6.0.1: {}
-
   get-tsconfig@4.14.3:
     dependencies:
       resolve-pkg-maps: 1.0.0
@@ -5948,8 +5891,6 @@ snapshots:
 
   html-entities@2.6.0: {}
 
-  human-signals@2.1.0: {}
-
   identifier-regex@1.1.0:
     dependencies:
       reserved-identifiers: 1.2.0
@@ -5988,8 +5929,6 @@ snapshots:
   is-number@7.0.0: {}
 
   is-plain-obj@4.1.0: {}
-
-  is-stream@2.0.1: {}
 
   is-what@4.1.16: {}
 
@@ -6182,8 +6121,6 @@ snapshots:
     dependencies:
       is-what: 4.1.16
 
-  merge-stream@2.0.0: {}
-
   merge2@1.4.1: {}
 
   meriyah@7.4.0: {}
@@ -6327,8 +6264,6 @@ snapshots:
 
   mime@4.1.0: {}
 
-  mimic-fn@2.1.0: {}
-
   minimatch@10.2.6:
     dependencies:
       brace-expansion: 5.0.12
@@ -6358,10 +6293,6 @@ snapshots:
       semver: 7.8.5
       validate-npm-package-name: 7.0.2
 
-  npm-run-path@4.0.1:
-    dependencies:
-      path-key: 3.1.1
-
   object-deep-merge@2.0.1: {}
 
   obug@2.2.1: {}
@@ -6369,10 +6300,6 @@ snapshots:
   obug@3.0.0: {}
 
   ohash@2.0.12: {}
-
-  onetime@5.1.2:
-    dependencies:
-      mimic-fn: 2.1.0
 
   optionator@0.9.4:
     dependencies:
@@ -6443,6 +6370,8 @@ snapshots:
       semver: 7.8.5
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 7.0.2
+
+  package-manager-detector@1.9.0: {}
 
   parent-module@1.0.1:
     dependencies:
@@ -6575,8 +6504,6 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  signal-exit@3.0.7: {}
-
   sisteransi@1.0.5: {}
 
   sort-object-keys@2.1.0: {}
@@ -6643,8 +6570,6 @@ snapshots:
       ansi-regex: 6.4.0
 
   strip-bom@3.0.0: {}
-
-  strip-final-newline@2.0.0: {}
 
   strip-indent@4.1.1: {}
 
