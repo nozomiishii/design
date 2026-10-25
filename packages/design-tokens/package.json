@@ -20,7 +20,7 @@
   "devDependencies": {
     "@nozomiishii/tsconfig": "2.8.1",
     "@terrazzo/cli": "2.10.0",
-    "@terrazzo/plugin-css": "2.9.0",
+    "@terrazzo/plugin-css": "2.10.0",
     "@terrazzo/plugin-tailwind": "2.9.0",
     "@types/node": "24.19.2",
     "@vitest/coverage-v8": "5.0.5",
