@@ -209,8 +209,8 @@ importers:
         specifier: 2.10.0
         version: 2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))
       '@terrazzo/plugin-tailwind':
-        specifier: 2.9.0
-        version: 2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.10.0)(tailwindcss@4.3.3)
+        specifier: 2.10.0
+        version: 2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.10.0)(tailwindcss@4.3.3)
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
@@ -1447,13 +1447,13 @@ packages:
       '@terrazzo/cli': ^2.10.0
       '@terrazzo/parser': ^2.10.0
 
-  '@terrazzo/plugin-tailwind@2.9.0':
-    resolution: {integrity: sha512-ivQR6EYdUpEB+lXIOhqk8EmrIwaus9J0ks/xnzbXldO+zNTJfDq8BJ30C7diBBv+0B9m5ATubr3u4oavNO4i/g==}
+  '@terrazzo/plugin-tailwind@2.10.0':
+    resolution: {integrity: sha512-5+YrpARrvGmvdkz5QCojVG+p4GUHwcDLisOmgUX5tOGKJhIPySlu6kYio+fsOdCNnTG70kTqEgIWBTheO/ncdQ==}
     peerDependencies:
-      '@terrazzo/cli': ^2.9.0
-      '@terrazzo/parser': ^2.9.0
-      '@terrazzo/plugin-css': ^2.9.0
-      '@terrazzo/token-tools': ^2.9.0
+      '@terrazzo/cli': ^2.10.0
+      '@terrazzo/parser': ^2.10.0
+      '@terrazzo/plugin-css': ^2.10.0
+      '@terrazzo/token-tools': ^2.10.0
       tailwindcss: ^4.0.0
 
   '@terrazzo/token-tools@2.10.0':
@@ -4768,7 +4768,7 @@ snapshots:
       '@terrazzo/parser': 2.10.0(yaml-to-momoa@0.1.0)
       '@terrazzo/token-tools': 2.10.0
 
-  '@terrazzo/plugin-tailwind@2.9.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.10.0)(tailwindcss@4.3.3)':
+  '@terrazzo/plugin-tailwind@2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0))(@terrazzo/plugin-css@2.10.0(@terrazzo/cli@2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))(@terrazzo/parser@2.10.0(yaml-to-momoa@0.1.0)))(@terrazzo/token-tools@2.10.0)(tailwindcss@4.3.3)':
     dependencies:
       '@terrazzo/cli': 2.10.0(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)
       '@terrazzo/parser': 2.10.0(yaml-to-momoa@0.1.0)
